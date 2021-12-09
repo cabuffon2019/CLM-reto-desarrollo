@@ -30,6 +30,20 @@ class MoviesControllers {
     }
   }
 
+    /**
+   * Add a movie
+   * @param {ctx} Koa Context
+   */
+     async add(ctx) {
+      try {
+        const movie = await new Movie(ctx.request.body).save();
+        ctx.body = movie;
+      } catch (err) {
+        console.log(getErrors(err));
+        ctx.throw(422);
+      }
+    }
+
   /**
    * Find and Update a movie
    * @param {ctx} Koa Context
@@ -43,8 +57,8 @@ class MoviesControllers {
       movie.Plot = movie.Plot.replace(ctx.request.body.find, ctx.request.body.replace);
       ctx.body = movie;
       const movie2 = await Movie.findByIdAndUpdate(
-        ctx.params.id,
-        ctx.body
+      ctx.params.id,
+      ctx.body
       );
 
     } catch (err) {
@@ -55,6 +69,12 @@ class MoviesControllers {
       ctx.throw(500);
     }
   }
+
+
+
+
+
+
 
   /**
  * Update a movie
@@ -76,20 +96,6 @@ class MoviesControllers {
         ctx.throw(404);
       }
       ctx.throw(500);
-    }
-  }
-
-  /**
-   * Add a movie
-   * @param {ctx} Koa Context
-   */
-  async add(ctx) {
-    try {
-      const movie = await new Movie(ctx.request.body).save();
-      ctx.body = movie;
-    } catch (err) {
-      console.log(getErrors(err));
-      ctx.throw(422);
     }
   }
 

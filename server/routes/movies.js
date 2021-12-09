@@ -22,12 +22,15 @@ router.post('/:id', MoviesControllers.findByIdUpdate);
 // call POST
 router.get('/:id', MoviesControllers.findById);
 
+
+
+
+
+
 // PUT /api/movies/id
-// call POST 
 router.put('/:id', MoviesControllers.update);
 
 // DELETE /api/movies/id
-// call POST 
 router.delete('/:id', MoviesControllers.delete);
 
 export default router;
