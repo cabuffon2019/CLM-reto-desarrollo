@@ -38,6 +38,7 @@ que recibe un id como variable.
 <li>El endpoint que busca una pelicula en BD Mongo por Id, que recibe un BODY para reeemplazar el campo PLOT, contiene un metodo 
 POST http://localhost:3000/api/movies/:id
 
+### BODY EJEMPLO
 ```BODY EJEMPLO
 {
     "title": "Guardians of the Galaxy Vol. 1",
@@ -61,4 +62,10 @@ POST http://localhost:3000/api/movies/:id
             "value": "67/100"
         }
         ]
-```}
+}
+
+{
+    "movie": "star wars", 
+    "find": "dealing", 
+    "replace": "CLM Dev" 
+}
