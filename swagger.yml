@@ -1,0 +1,130 @@
+swagger: "2.0"
+info:
+  description: "reto-desarrollo
+MovieNode Challenge!
+Construir a través de NodeJS un microservicio con 2 endpoints que cumplan las siguientes especificaciones:"
+  version: "1.0.0"
+  title: "MovieNode Challenge!"
+tags:
+- name: "movieFindById"
+  description: "Buscador de peliculas por Id"
+
+- name: "movieFind"
+  description: "Obtiene todas las peliculas"  
+  
+- name: "movieSearchReplace"
+  description: "Buscar pelicula y reemplazar campo PLOT"    
+schemes:
+- "https"
+- "http"
+paths:
+  /api/movies/{id}:
+    get:
+      tags:
+      - "movieFindById"
+      summary: "Find movie by ID"
+      description: "Returns a single movie"
+      operationId: "getMovieById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of movie to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Movie"
+        "500":
+          description: "Internal Server Error"
+        "404":
+          description: "NotFoundError"
+    post:
+      tags:
+      - "movieSearchReplace"
+      summary: "Search for and replace"
+      description: ""
+      operationId: "findUpdateMovie"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of movie to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Find movie object replace field PLOT"
+        required: true
+        schema:
+          $ref: "#/definitions/Movie"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Movie"
+        "500":
+          description: "Internal Server Error"
+        "404":
+          description: "NotFoundError"      
+  /api/movies:
+    get:
+      tags:
+      - "movieFind"
+      summary: "Finds movies"
+      description: "Get all the movies"
+      operationId: "findMovies"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Movie"
+        "400":
+          description: "Invalid status value"
+
+definitions:
+  Movie:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      year:
+        type: "integer"
+        format: "int32"
+      released:
+        type: "string"
+        format: "date-time"
+      genre:
+        type: "string"
+      director:
+        type: "string"
+      actors:
+        type: "string"
+      plot:
+        type: "string"
+      ratings:
+        type: "object"
+        properties:
+          source:
+            type: "string"
+          value:
+            type: "string"
+    xml:
+      name: "Movie"

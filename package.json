@@ -1,0 +1,39 @@
+{
+  "name": "movie-node-challenge",
+  "description": "Koa 2 RESTful API MOVIE",
+  "version": "1.0.0",
+  "author": "",
+  "keywords": [
+    "koa",
+    "rest",
+    "api",
+    "mongodb",
+    "mongoose",
+    "async",
+    "es7"
+  ],
+  "main": "server/index.js",
+  "scripts": {
+    "start": "nodemon server/ --exec babel-node",
+    "build": "babel server -d dist"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.5.0",
+    "glob": "^7.1.4",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-helmet": "^4.0.0",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.6.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.2",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-syntax-async-functions": "^6.5.0",
+    "babel-plugin-transform-async-to-generator": "^6.5.0",
+    "babel-preset-es2015": "^6.3.13",
+    "nodemon": "^1.19.1"
+  }
+}
